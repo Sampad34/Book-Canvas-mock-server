@@ -1,6 +1,10 @@
 import express from "express";
 import jsonServer from "json-server";
 import auth from "json-server-auth";
+import dotenv from "dotenv";
+
+
+dotenv.config();
 
 const server = express();
 const middlewares = jsonServer.defaults();
@@ -35,6 +39,7 @@ server.use(auth);
 server.use(router);
 
 // Start server
-server.listen(8000, () => {
-  console.log("✅ JSON Server with Auth running at http://localhost:8000");
+const PORT=process.env.PORT || 8000;
+server.listen(PORT, () => {
+  console.log(`✅ JSON Server with Auth running at ${PORT}`);
 });
