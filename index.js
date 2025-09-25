@@ -6,7 +6,23 @@ import cors from "cors";
 
 dotenv.config();
 
+
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+// for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+
 const server = express();
+
+// serve static images
+server.use("/images", express.static(path.join(__dirname, "data/images")));
+
+
 
 server.use(
   cors({
