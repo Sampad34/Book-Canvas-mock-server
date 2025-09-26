@@ -44,7 +44,8 @@ server.use((req, res, next) => {
 });
 
 // Load db.json
-const router = jsonServer.router("./data/db.json");
+
+const router = jsonServer.router(path.join(__dirname, "data/db.json"));
 server.db = router.db; // expose db for auth
 
 // 🔑 Access rules for resources
